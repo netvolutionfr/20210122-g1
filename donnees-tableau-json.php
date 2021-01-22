@@ -21,22 +21,23 @@
         </thead>
         <tbody>
         <?php
-        $f = fopen("http://csv.siovision.siovision.fr/donnees.csv", "r");
-        while($ligne = fgets($f)) {
-            $donnees = explode(";", $ligne);
+        $f = fopen("http://www.filltext.com/?rows=10&fname={firstName}&lname={lastName}&email={email}", "r");
+        $ligne = fgets($f);
+        $donnees = json_decode($ligne);
 
+        foreach ($donnees as $donnee) {
             echo "<tr>";
 
             echo "<td>";
-            echo $donnees[0];
+            echo $donnee->lname;
             echo "</td>";
 
             echo "<td>";
-            echo $donnees[1];
+            echo $donnee->fname;
             echo "</td>";
 
             echo "<td>";
-            echo $donnees[2];
+            echo $donnee->email;
             echo "</td>";
 
             echo "</tr>";
